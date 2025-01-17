@@ -1,0 +1,165 @@
+/* Navbar */
+nav {
+  border-right: 1.5px solid #fafafa;
+  width: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(100vh - 40px);
+  user-select: none;
+}
+
+nav h3 {
+  font-family: "Satoshi Medium";
+  font-size: 14px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+nav ul #add-btn {
+  font-family: "Satoshi Medium";
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+nav ul #add-btn:hover{
+  transform: scale(1.1);
+}
+
+nav ul .clr-option {
+  list-style-type: none;
+  background-color: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-sizing: border-box;
+}
+
+nav ul .clr-option:hover{
+  transform: scale(1.2);
+}
+/* Navbar */
+
+/* Right Side */
+.right-side {
+  margin-left: 101px;
+  min-height: 100vh;
+  padding: 20px;
+}
+/* Right Side */
+
+/* Notes Page */
+.notes-container h1 {
+  font-family: "Satoshi Black";
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.notes-container .notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 240px));
+  gap: 10px;
+}
+
+.notes-container .notes-grid .note-box {
+  aspect-ratio: 1;
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  width: 100%;
+  gap: 20px;
+  position: relative;
+}
+
+.notes-container .notes-grid .note-box .title {
+  font-family: "Satoshi Black";
+  font-size: 14px;
+}
+
+.notes-container .notes-grid .note-box .preview {
+  font-family: "Satoshi Regular";
+  font-size: 12px;
+  color: #a3a3a3;
+  text-align: justify;
+  
+  overflow: hidden; /* Hide the overflowed content */
+  text-overflow: ellipsis; /* Apply ellipsis when text overflows */
+  display: -webkit-box; /* Create a flexible box for multi-line truncation */
+  line-clamp: 6;
+  -webkit-line-clamp: 6; /* Number of lines before truncating with ellipsis */
+  -webkit-box-orient: vertical; /* Vertical box layout to support multi-line truncation */
+  white-space: normal; /* Allow text to wrap onto multiple lines */
+}
+
+.notes-container .notes-grid .note-box .color-tag {
+  background-color: black;
+
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  bottom: 20px;
+  right: 20px;
+}
+/* Notes Page */
+
+/* Note Template Page */
+.note-template-container {
+  height: 100vh;
+}
+
+/* .note-template-container h1 {
+  border: none;
+  outline: none;
+  font-family: "Satoshi Black";
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: left;
+  direction: ltr;
+  width: fit-content;
+} */
+
+.note-template-container .title input{
+  font-family: "Satoshi Black";
+  font-size: 24px;
+  margin-bottom: 30px;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.note-template-container textarea {
+  border: 1px solid red;
+
+  font-family: "Satoshi Regular";
+  font-size: 14px;
+  outline: none;
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1; 
+}
+/* Note Template Page */
