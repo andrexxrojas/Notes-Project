@@ -104,13 +104,13 @@ nav ul .clr-option:hover{
   color: #a3a3a3;
   text-align: justify;
 
-  overflow: hidden; /* Hide the overflowed content */
-  text-overflow: ellipsis; /* Apply ellipsis when text overflows */
-  display: -webkit-box; /* Create a flexible box for multi-line truncation */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box; 
   line-clamp: 6;
-  -webkit-line-clamp: 6; /* Number of lines before truncating with ellipsis */
-  -webkit-box-orient: vertical; /* Vertical box layout to support multi-line truncation */
-  white-space: normal; /* Allow text to wrap onto multiple lines */
+  -webkit-line-clamp: 6; 
+  -webkit-box-orient: vertical; 
+  white-space: normal;
 }
 
 .notes-container .notes-grid .note-box .color-tag {
@@ -129,17 +129,6 @@ nav ul .clr-option:hover{
 .note-template-container {
   height: 100vh;
 }
-
-/* .note-template-container h1 {
-  border: none;
-  outline: none;
-  font-family: "Satoshi Black";
-  font-size: 24px;
-  margin-bottom: 30px;
-  text-align: left;
-  direction: ltr;
-  width: fit-content;
-} */
 
 .note-template-container .title input{
   font-family: "Satoshi Black";
@@ -165,7 +154,6 @@ nav ul .clr-option:hover{
 /* Note Template Page */
 
 .save_button {
-  /* Variables */
   --button_radius: 0.75em;
   --button_color: #e8e8e8;
   --button_outline_color: #000000;
@@ -193,11 +181,9 @@ nav ul .clr-option:hover{
 }
 
 button:hover .button_top {
-  /* Pull the button upwards when hovered */
   transform: translateY(-0.33em);
 }
 
 button:active .button_top {
-  /* Push the button downwards when pressed */
   transform: translateY(0);
 }

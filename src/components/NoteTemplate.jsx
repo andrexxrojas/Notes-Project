@@ -1,23 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useStore from '../useStore'
 import '../App.css'
 
-
 function NoteTemplate() {
     const addNote = useStore((state) => state.addNote)
+    const updateNote = useStore((state) => state.updateNote)
     const setView = useStore((state) => state.setView)
+    const setColor = useStore((state) => state.setColor)
+    const selectedColor = useStore((state) => state.selectedColor)
+    const selectedNote = useStore((state) => state.selectedNote)
+    
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
 
-    const handleSave = () => {
-        const newNote = {
-            id: Date.now(),
-            title,
-            text,
-            createdAt: new Date().toISOString()
+    useEffect(() => {
+        if (selectedNote) {
+            setTitle(selectedNote.title)
+            setText(selectedNote.text)
         }
-        addNote(newNote)
-        setView('all')
+    }, [selectedNote])
+
+    const colors = [
+        "#F1ACE5", // Pink
+        "#ADE4B6", // Green
+        "#A7C7E7", // Blue
+        "#FFBF81", // Orange
+        "#E6E6FA"  // Lavender
+    ]
+
+    const handleSave = () => {
+        if (selectedNote) {
+            updateNote(selectedNote.id, {
+                title,
+                text,
+                color: selectedColor
+            })
+        } else {
+            const newNote = {
+                id: Date.now(),
+                title,
+                text,
+                createdAt: new Date().toISOString()
+            }
+            addNote(newNote)
+        }
     }
 
     return (
@@ -37,10 +63,22 @@ function NoteTemplate() {
                 placeholder="Write your note here..."
             />
 
-            <button className="save_button" onClick={handleSave}>
-                <span class="button_top"> Save </span>
-            </button>
+            <div className="color-picker">
+                {colors.map((color) => (
+                    <div
+                        key={color}
+                        className={`color-option ${color === selectedColor ? 'selected' : ''}`}
+                        style={{ backgroundColor: color }}
+                        onClick={() => setColor(color)}
+                    />
+                ))}
+            </div>
 
+            <button className="save_button" onClick={handleSave}>
+                <span className="button_top">
+                    {selectedNote ? 'Update' : 'Save'}
+                </span>
+            </button>
         </div>
     )
 }

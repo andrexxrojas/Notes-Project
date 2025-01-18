@@ -28,7 +28,14 @@ function Navbar() {
     });
 
     const handleAddClick = () => {
-        setView('template')
+        const activeColor = Object.values(selectedColor).find(color => color.active);
+
+        if(activeColor) {
+            useStore.getState().setColor(activeColor.color);
+            setView('template');
+        }else {
+            return;
+        }
     }
 
     function handleColor(colorKey) {
