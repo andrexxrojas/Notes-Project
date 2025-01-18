@@ -46,8 +46,28 @@ function NoteTemplate() {
         }
     }
 
-    const handleCancel = () => {
-        setView('all')
+    const handleFormatting = (format) => {
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+
+        const range = selection.getRangeAt(0);
+        const span = document.createElement("span");
+
+        switch (format) {
+            case "bold":
+                span.style.fontWeight = "bold";
+                break;
+            case "italic":
+                span.style.fontStyle = "italic";
+                break;
+            case "underline":
+                span.style.textDecoration = "underline";
+                break;
+            default:
+                return;
+        }
+
+        range.surroundContents(span);
     }
 
     return (
@@ -67,7 +87,6 @@ function NoteTemplate() {
                 placeholder="Write your note here..."
             />
 
-<<<<<<< HEAD
             <div className="color-picker">
                 {colors.map((color) => (
                     <div
@@ -77,15 +96,6 @@ function NoteTemplate() {
                         onClick={() => setColor(color)}
                     />
                 ))}
-=======
-            <div className="button-container">
-                <button className="cancel_button" onClick={handleCancel}>
-                    <span className="button_top">Cancel</span>
-                </button>
-                <button className="save_button" onClick={handleSave}>
-                    <span className="button_top">Save</span>
-                </button>
->>>>>>> 460eed963859cb7a98f9df7e2ba84c7a5bb6302d
             </div>
 
             <button className="save_button" onClick={handleSave}>

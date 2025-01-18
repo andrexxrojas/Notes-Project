@@ -140,8 +140,6 @@ nav ul .clr-option:hover{
 }
 
 .note-template-container textarea {
-  border: 1px solid red;
-
   font-family: "Satoshi Regular";
   font-size: 14px;
   outline: none;
@@ -171,6 +169,10 @@ nav ul .clr-option:hover{
   cursor: pointer;
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
 
 .cancel_button {

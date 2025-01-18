@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-<<<<<<< HEAD
 import { persist } from 'zustand/middleware'
 
 const useStore = create(
@@ -51,51 +50,18 @@ const useStore = create(
         selectedColor: note.color // Set the color to match the selected note
       }),
 
-      clearNotes: () => set({ notes: [] }) // This is for clearing all notes
+      clearNotes: () => set({ notes: [] }), // This is for clearing all notes
+    
+      clearLastTwoNotes: () => set((state) => {
+        const updatedNotes = state.notes.slice(0, -2); // Remove the last two notes
+        return { notes: updatedNotes };
+    }),
     }),
     {
       name: 'notes-storage',
       version: 1
     }
   )
-=======
-import { persist, createJSONStorage } from 'zustand/middleware'
-
-const useStore = create(
-    persist(
-        (set) => ({
-            notes: [],
-            currentView: 'all',
-            selectedNote: null,
-
-            setView: (view) => set({ currentView: view }),
-            addNote: (note) => set((state) => ({
-                notes: [...state.notes, note],
-                currentView: 'all'
-            })),
-
-            updateNote: (id, updatedNote) => set((state) => ({
-                notes: state.notes.map(note =>
-                    note.id === id ? { ...note, ...updatedNote } : note
-                )
-            })),
-
-            setSelectedNote: (note) => set({ selectedNote: note }),
-
-            deleteNote: (id) => set((state) => ({
-                notes: state.notes.filter(note => note.id !== id)
-            })),
-        }),
-
-        {
-            name: 'notes-storage',
-            storage: createJSONStorage(() => localStorage),
-            partialize: (state) => ({
-                notes: state.notes
-            })
-        }
-    )
->>>>>>> 460eed963859cb7a98f9df7e2ba84c7a5bb6302d
 )
 
 export default useStore
