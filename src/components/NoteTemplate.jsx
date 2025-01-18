@@ -46,30 +46,6 @@ function NoteTemplate() {
         }
     }
 
-    const handleFormatting = (format) => {
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
-
-        const range = selection.getRangeAt(0);
-        const span = document.createElement("span");
-
-        switch (format) {
-            case "bold":
-                span.style.fontWeight = "bold";
-                break;
-            case "italic":
-                span.style.fontStyle = "italic";
-                break;
-            case "underline":
-                span.style.textDecoration = "underline";
-                break;
-            default:
-                return;
-        }
-
-        range.surroundContents(span);
-    }
-
     return (
         <div className="note-template-container">
             <div className="title">
