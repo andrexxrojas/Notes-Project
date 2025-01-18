@@ -29,10 +29,11 @@ nav ul {
 nav ul #add-btn {
   font-family: "Satoshi Medium";
   font-size: 16px;
+  background-color: #f5f5f5;
   margin-bottom: 10px;
   width: 35px;
   height: 35px;
-  border-radius: 50%;
+  border-radius: 8px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -41,6 +42,7 @@ nav ul #add-btn {
 
 nav ul #add-btn:hover{
   transform: scale(1.1);
+  background-color: #e5e5e5;
 }
 
 nav ul .clr-option {
@@ -91,6 +93,11 @@ nav ul .clr-option:hover{
   width: 100%;
   gap: 20px;
   position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.notes-container .notes-grid .note-box:hover {
+  background-color: #f5f5f5;
 }
 
 .notes-container .notes-grid .note-box .title {
@@ -123,6 +130,31 @@ nav ul .clr-option:hover{
   bottom: 20px;
   right: 20px;
 }
+
+.notes-container .notes-grid .note-box .delete-btn {
+  font-family: "Satoshi Regular";
+  font-size: 9px;
+  width: fit-content;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  color: #FC441C;
+  background-color: rgba(252, 68, 28, 0.3);
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.notes-container .notes-grid .note-box:hover .delete-btn {
+  visibility: visible;
+  opacity: 1;
+}
 /* Notes Page */
 
 /* Note Template Page */
@@ -148,8 +180,50 @@ nav ul .clr-option:hover{
   width: 100%;
   height: 100%;
   flex-grow: 1;
+  text-align: justify;
 }
 /* Note Template Page */
+
+/* NavEdit Styles */
+nav ul .btn {
+  font-family: "Satoshi Medium";
+  font-size: 14px;
+  background-color: #f5f5f5;
+  border: none;
+  outline: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+nav ul .btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+nav ul .btn:hover {
+  transform: scale(1.1);
+  background-color: #e5e5e5;
+}
+
+nav ul .btn.bold {
+  font-weight: bold;
+}
+
+nav ul .btn.italic {
+  font-style: italic;
+}
+
+nav ul .btn.underline {
+  text-decoration: underline;
+}
+/* NavEdit Styles */
 
 .button-container {
   position: absolute;
@@ -160,19 +234,18 @@ nav ul .clr-option:hover{
 }
 
 .save_button {
-  --button_radius: 0.75em;
-  --button_color: #e8e8e8;
-  --button_outline_color: #000000;
-  font-size: 17px;
+  font-family: "Satoshi Medium";
+  font-size: 14px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-radius: var(--button_radius);
-  background: var(--button_outline_color);
-
+  border-radius: 8px;
   position: fixed;
   right: 20px;
   bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cancel_button {
@@ -191,19 +264,13 @@ nav ul .clr-option:hover{
 .button_top {
   display: block;
   box-sizing: border-box;
-  border: 2px solid var(--button_outline_color);
-  border-radius: var(--button_radius);
+  border-radius: 8px;
   padding: 0.75em 1.5em;
-  background: var(--button_color);
-  color: var(--button_outline_color);
-  transform: translateY(-0.2em);
-  transition: transform 0.1s ease;
+  background: #f5f5f5;
+  color: #121213;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-button:hover .button_top {
-  transform: translateY(-0.33em);
-}
-
-button:active .button_top {
-  transform: translateY(0);
+.button_top:hover {
+  background-color: #e5e5e5;
 }
