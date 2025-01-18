@@ -46,6 +46,10 @@ function NoteTemplate() {
         }
     }
 
+    const handleCancel = () => {
+        setView('all')
+    }
+
     return (
         <div className="note-template-container">
             <div className="title">
@@ -63,6 +67,7 @@ function NoteTemplate() {
                 placeholder="Write your note here..."
             />
 
+<<<<<<< HEAD
             <div className="color-picker">
                 {colors.map((color) => (
                     <div
@@ -72,6 +77,15 @@ function NoteTemplate() {
                         onClick={() => setColor(color)}
                     />
                 ))}
+=======
+            <div className="button-container">
+                <button className="cancel_button" onClick={handleCancel}>
+                    <span className="button_top">Cancel</span>
+                </button>
+                <button className="save_button" onClick={handleSave}>
+                    <span className="button_top">Save</span>
+                </button>
+>>>>>>> 460eed963859cb7a98f9df7e2ba84c7a5bb6302d
             </div>
 
             <button className="save_button" onClick={handleSave}>
