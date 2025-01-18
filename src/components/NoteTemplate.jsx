@@ -20,6 +20,10 @@ function NoteTemplate() {
         setView('all')
     }
 
+    const handleCancel = () => {
+        setView('all')
+    }
+
     return (
         <div className="note-template-container">
             <div className="title">
@@ -37,9 +41,14 @@ function NoteTemplate() {
                 placeholder="Write your note here..."
             />
 
-            <button className="save_button" onClick={handleSave}>
-                <span class="button_top"> Save </span>
-            </button>
+            <div className="button-container">
+                <button className="cancel_button" onClick={handleCancel}>
+                    <span className="button_top">Cancel</span>
+                </button>
+                <button className="save_button" onClick={handleSave}>
+                    <span className="button_top">Save</span>
+                </button>
+            </div>
 
         </div>
     )

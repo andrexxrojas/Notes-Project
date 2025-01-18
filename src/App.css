@@ -164,6 +164,14 @@ nav ul .clr-option:hover{
 }
 /* Note Template Page */
 
+.button-container {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 15px;
+}
+
 .save_button {
   /* Variables */
   --button_radius: 0.75em;
@@ -175,9 +183,19 @@ nav ul .clr-option:hover{
   cursor: pointer;
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+}
+
+.cancel_button {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
 }
 
 .button_top {
