@@ -3,8 +3,11 @@ import "./App.css"
 
 // Components:
 import Navbar from "./components/Nav";
-import NotesPage from "./components/NotesAll"; //This is for viewing all notes
+import NavEdit from "./components/NavEdit";
+import NotesPage from "./components/NotesAll"; 
 import NoteTemplate from "./components/NoteTemplate";
+
+// Zustand:
 import useStore from "./useStore";
 
 function App() {
@@ -12,7 +15,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar/>
+      {currentView === "all" ? <Navbar/> : <NavEdit/>}
       <div className="right-side">
       {currentView === 'all' ? <NotesPage /> : <NoteTemplate />}
       </div>
