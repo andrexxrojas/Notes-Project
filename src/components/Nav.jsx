@@ -1,6 +1,9 @@
 import { useState } from "react";
+import useStore from "../useStore";
 
 function Navbar() {
+    const setView = useStore((state) => state.setView)
+
     const [selectedColor, setSelectedColor] = useState({
         clr1: {
             active: false,
@@ -24,6 +27,10 @@ function Navbar() {
         }
     });
 
+    const handleAddClick = () => {
+        setView('template')
+    }
+
     function handleColor(colorKey) {
         const updatedColors = Object.keys(selectedColor).reduce((acc, key) => {
             acc[key] = { ...selectedColor[key], active: key === colorKey };
@@ -37,10 +44,10 @@ function Navbar() {
             <h3>LogNotes</h3>
 
             <ul>
-                <button id="add-btn">
+                <button id="add-btn" onClick={handleAddClick}>
                     <p>+</p>
                 </button>
-                
+
                 {Object.entries(selectedColor).map(([key, value]) => (
                     <li
                         key={key}

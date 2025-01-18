@@ -1,33 +1,46 @@
 import { useState } from "react";
+import useStore from '../useStore'
+import '../App.css'
+
 
 function NoteTemplate() {
-    const [title, setTitle] = useState("");
-    const [text, setText] = useState("");
+    const addNote = useStore((state) => state.addNote)
+    const setView = useStore((state) => state.setView)
+    const [title, setTitle] = useState("")
+    const [text, setText] = useState("")
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value); // For contenteditable div, use innerText
-    };
-
-    const handleTextChange = (event) => {
-        setText(event.target.value); // For textarea, use value
-    };
+    const handleSave = () => {
+        const newNote = {
+            id: Date.now(),
+            title,
+            text,
+            createdAt: new Date().toISOString()
+        }
+        addNote(newNote)
+        setView('all')
+    }
 
     return (
         <div className="note-template-container">
             <div className="title">
-                <input 
+                <input
                     type="text"
                     value={title}
-                    onChange={handleTitleChange}
+                    onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                 />
             </div>
 
-            <textarea 
+            <textarea
                 value={text}
-                onChange={handleTextChange}
+                onChange={(e) => setText(e.target.value)}
                 placeholder="Write your note here..."
             />
+
+            <button className="save_button" onClick={handleSave}>
+                <span class="button_top"> Save </span>
+            </button>
+
         </div>
     )
 }
