@@ -111,12 +111,12 @@ nav ul .clr-option:hover{
   color: #a3a3a3;
   text-align: justify;
 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  display: -webkit-box; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
   line-clamp: 6;
-  -webkit-line-clamp: 6; 
-  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
   white-space: normal;
 }
 
@@ -273,4 +273,20 @@ nav ul .btn.underline {
 
 .button_top:hover {
   background-color: #e5e5e5;
+}
+
+.editor {
+  font-family: "Satoshi Regular";
+  font-size: 14px;
+  outline: none;
+  border: none;
+  min-height: 300px;
+  width: 100%;
+  padding: 10px;
+  text-align: justify;
+}
+
+.editor[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
 }

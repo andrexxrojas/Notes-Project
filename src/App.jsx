@@ -4,7 +4,7 @@ import "./App.css"
 // Components:
 import Navbar from "./components/Nav";
 import NavEdit from "./components/NavEdit";
-import NotesPage from "./components/NotesAll"; 
+import NotesPage from "./components/NotesAll";
 import NoteTemplate from "./components/NoteTemplate";
 
 // Zustand:

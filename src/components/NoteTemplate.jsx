@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useStore from '../useStore'
 import '../App.css'
 
@@ -9,14 +9,15 @@ function NoteTemplate() {
     const setColor = useStore((state) => state.setColor)
     const selectedColor = useStore((state) => state.selectedColor)
     const selectedNote = useStore((state) => state.selectedNote)
-    
+    const editorRef = useRef(null)
+
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
 
     useEffect(() => {
         if (selectedNote) {
             setTitle(selectedNote.title)
-            setText(selectedNote.text)
+            editorRef.current.innerHTML = selectedNote.text
         }
     }, [selectedNote])
 
@@ -32,14 +33,14 @@ function NoteTemplate() {
         if (selectedNote) {
             updateNote(selectedNote.id, {
                 title,
-                text,
+                text: editorRef.current.innerHTML,
                 color: selectedColor
             })
         } else {
             const newNote = {
                 id: Date.now(),
                 title,
-                text,
+                text: editorRef.current.innerHTML,
                 createdAt: new Date().toISOString()
             }
             addNote(newNote)
@@ -57,9 +58,10 @@ function NoteTemplate() {
                 />
             </div>
 
-            <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
+            <div
+                ref={editorRef}
+                contentEditable={true}
+                className="editor"
                 placeholder="Write your note here..."
             />
 

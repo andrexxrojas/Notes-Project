@@ -10,19 +10,19 @@ const useStore = create(
       selectedColor: null,
 
       setColor: (color) => set({ selectedColor: color }),
-      
+
       setView: (view) => set((state) => {
         if (view === 'template' && !state.selectedColor && !state.selectedNote) {
           return state
         }
         return { currentView: view }
       }),
-      
+
       addNote: (note) => set((state) => {
         const processedNote = {
           ...note,
           title: note.title.trim() || 'Untitled Note',
-          text: note.text.trim() || 'Empty note...',
+          text: note.text || '<div>Empty note...</div>',
           color: state.selectedColor
         }
         return {
@@ -34,8 +34,8 @@ const useStore = create(
 
       updateNote: (id, updatedNote) => set((state) => ({
         notes: state.notes.map(note =>
-          note.id === id ? { 
-            ...note, 
+          note.id === id ? {
+            ...note,
             ...updatedNote,
             title: updatedNote.title.trim() || 'Untitled Note',
             text: updatedNote.text.trim() || 'Empty note...'
@@ -44,14 +44,14 @@ const useStore = create(
         currentView: 'all',
         selectedNote: null
       })),
-      
-      setSelectedNote: (note) => set({ 
+
+      setSelectedNote: (note) => set({
         selectedNote: note,
         selectedColor: note.color // Set the color to match the selected note
       }),
 
       clearNotes: () => set({ notes: [] }), // This is for clearing all notes
-    
+
       clearLastTwoNotes: () => set((state) => {
         const updatedNotes = state.notes.slice(0, -2); // Remove the last two notes
         return { notes: updatedNotes };
