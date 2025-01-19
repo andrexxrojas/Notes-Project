@@ -94,6 +94,7 @@ nav ul .clr-option:hover{
   gap: 20px;
   position: relative;
   transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
 }
 
 .notes-container .notes-grid .note-box:hover {
@@ -118,6 +119,9 @@ nav ul .clr-option:hover{
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   white-space: normal;
+
+  max-height: 150px;
+  overflow: hidden;
 }
 
 .notes-container .notes-grid .note-box .color-tag {
@@ -155,6 +159,15 @@ nav ul .clr-option:hover{
   visibility: visible;
   opacity: 1;
 }
+
+.notes-container .notes-grid .note-box .preview img {
+  max-width: 100%;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
 /* Notes Page */
 
 /* Note Template Page */
@@ -289,4 +302,11 @@ nav ul .btn.underline {
 .editor[placeholder]:empty:before {
   content: attr(placeholder);
   color: #555;
+}
+
+.editor img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 4px;
 }
