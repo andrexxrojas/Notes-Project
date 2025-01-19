@@ -55,7 +55,14 @@ const useStore = create(
       clearLastTwoNotes: () => set((state) => {
         const updatedNotes = state.notes.slice(0, -2); // Remove the last two notes
         return { notes: updatedNotes };
-    }),
+      }),
+
+      deleteNote: (id) => set((state) => ({
+        notes: state.notes.filter(note => note.id !== id),
+        currentView: 'all',
+        selectedNote: null
+      })),
+
     }),
     {
       name: 'notes-storage',
